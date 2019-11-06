@@ -17,6 +17,7 @@ import { reducers } from './reducers';
 import { CounterComponent } from './components/counter/counter.component';
 import { EffectsModule } from '@ngrx/effects';
 import { CounterEffects } from './effects/counter.effects';
+import { MoviesModule } from './features/movies/movies.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CounterEffects } from './effects/counter.effects';
     CounterComponent
   ],
   imports: [
+    MoviesModule,
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),

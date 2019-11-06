@@ -4,12 +4,18 @@ import { HomeComponent } from './components/home/home.component';
 import { TipcalculatorComponent } from './components/tip-calculator/tip-calculator.component';
 import { TodosComponent } from './components/todos/todos.component';
 import { CounterComponent } from './components/counter/counter.component';
+import { MoviesModule } from './features/movies/movies.module';
+import { MoviesComponent } from './features/movies/movies.component';
 
 
 const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'movies',
+    component: MoviesComponent
   },
   {
     path: 'tip',
