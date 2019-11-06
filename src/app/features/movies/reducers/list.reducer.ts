@@ -1,18 +1,19 @@
 import { EntityState, createEntityAdapter } from '@ngrx/entity';
-import { createReducer, Action } from '@ngrx/store';
+import { createReducer, Action, on } from '@ngrx/store';
+import * as actions from '../actions/list.actions';
 
-export interface Movieentity {
+export interface MovieEntity {
   id: string;
   title: string;
   rentalDays: number;
   rentalPrice: number;
 }
 
-export interface State extends EntityState<Movieentity> {
+export interface State extends EntityState<MovieEntity> {
 
 }
 
-export const adapter = createEntityAdapter<Movieentity>();
+export const adapter = createEntityAdapter<MovieEntity>();
 
 const initialState: State = {
   ids: ['1', '2'],
@@ -23,7 +24,8 @@ const initialState: State = {
 };
 
 const reducerFunction = createReducer(
-  initialState
+  initialState,
+  on(actions.addMovie, (state, action) => adapter.addOne(action.payload, state))
 );
 
 export function reducer(state: State = initialState, action: Action) {

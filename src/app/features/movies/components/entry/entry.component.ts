@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { addMovie } from '../../actions/list.actions';
+import { Store } from '@ngrx/store';
+import { MoviesState } from '../../reducers';
 
 @Component({
   selector: 'app-entry',
@@ -7,23 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EntryComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<MoviesState>) { }
 
   ngOnInit() {
   }
 
   add(titleEl: HTMLInputElement, rentalPriceEl: HTMLInputElement, rentalDaysEl: HTMLSelectElement) {
-    const iteamToAdd = {
+    const itemToAdd = {
       title: titleEl.value,
-      rentalPrice: rentalPriceEl.value,
-      rentalDays: rentalDaysEl.value
+      rentalPrice: rentalPriceEl.valueAsNumber,
+      rentalDays: parseInt(rentalDaysEl.value, 10),
+
     };
 
     // TODO: Replace this with a dispatch
-
-    console.log(iteamToAdd);
+    this.store.dispatch(addMovie({ ...itemToAdd }));
+    // console.log(itemToAdd);
     titleEl.value = '';
     rentalPriceEl.value = '';
     rentalDaysEl.value = '';
+    titleEl.focus();
   }
 }
