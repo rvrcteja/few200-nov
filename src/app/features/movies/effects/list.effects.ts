@@ -3,8 +3,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as appActions from '../../../actions/app.actions';
 import * as listActions from '../actions/list.actions';
-import { switchMap, map } from 'rxjs/operators';
+import { switchMap, map, catchError } from 'rxjs/operators';
 import { MovieEntity } from '../reducers/list.reducer';
+import { of } from 'rxjs';
 
 @Injectable()
 export class ListEffects {
@@ -36,7 +37,8 @@ export class ListEffects {
       switchMap(() => this.client.get<GetAllResponse>('http://localhost:3000/movies')
         .pipe(
           map(response => response.movies),
-          map(movies => listActions.loadMovieSuccess({ movies }))
+          map(movies => listActions.loadMovieSuccess({ movies })),
+          catchError(err => of(listActions.loadMovieFailure({ error: 'Could Not Load your Data!' })))
         )
       )
     ), { dispatch: true });
