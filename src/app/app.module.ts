@@ -19,6 +19,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { CounterEffects } from './effects/counter.effects';
 import { MoviesModule } from './features/movies/movies.module';
 
+import { BooksModule } from './features/books/books.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +37,7 @@ import { MoviesModule } from './features/movies/movies.module';
     MoviesModule,
     BrowserModule,
     AppRoutingModule,
+    BooksModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
     EffectsModule.forRoot([CounterEffects])

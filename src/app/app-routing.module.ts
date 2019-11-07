@@ -6,6 +6,7 @@ import { TodosComponent } from './components/todos/todos.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { MoviesModule } from './features/movies/movies.module';
 import { MoviesComponent } from './features/movies/movies.component';
+import { BooksComponent } from './features/books/books.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'counter',
     component: CounterComponent
+  },
+  {
+    path: 'books',
+    component: BooksComponent
   },
   {
     path: '**',
