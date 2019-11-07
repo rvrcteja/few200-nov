@@ -27,7 +27,8 @@ const initialState: State = {
 
 const reducerFunction = createReducer(
   initialState,
-  on(actions.addBook, (state, action) => adapter.addOne(action.payload, state))
+  on(actions.addBook, (state, action) => adapter.addOne(action.payload, state)),
+  on(actions.loanBook, (state, action) => adapter.removeOne(action.payload.id, state))
 
 );
 

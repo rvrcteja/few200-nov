@@ -20,6 +20,7 @@ import { CounterEffects } from './effects/counter.effects';
 import { MoviesModule } from './features/movies/movies.module';
 
 import { BooksModule } from './features/books/books.module';
+import { LoanComponent } from './features/books/components/loan/loan.component';
 
 @NgModule({
   declarations: [
